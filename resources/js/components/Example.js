@@ -24,8 +24,10 @@ export default class Example extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
+        this.handleDeleteWallet = this.handleDeleteWallet.bind(this)
     }
 
+    
    async handleSubmit(e){
         e.preventDefault();
         
@@ -72,7 +74,7 @@ export default class Example extends Component {
 
 
 
-     async componentDidMount(){
+    async componentDidMount(){
         try {
             let res = await fetch(`${url}/api/wallet`)
             let data = await res.json()
@@ -124,6 +126,27 @@ export default class Example extends Component {
 
     }
 
+    async handleDeleteWallet(){
+        let resultado = confirm("¿Quieres borrar todos los registros?");
+        if(resultado){
+            
+            try {
+                let res = await fetch(`${url}/api/walletDelete`)
+                let data = await res.json()
+                
+                this.setState({
+                    money: data.money,
+                    transfers: data.transfers
+                })
+            } catch (error) {
+                this.state({
+                    error
+                })
+            }
+        }
+    }
+    
+
     render(){
         const estilo = {
             fontSize: '4em',
@@ -141,7 +164,13 @@ export default class Example extends Component {
                             <div className="col-4" >
 
                                 <div >
-                                    <h1 style={estilo} className="font-weight-bold">${this.state.money}</h1>
+                                    <h1 
+                                        style={estilo} 
+                                        className="font-weight-bold"
+                                        onClick={this.handleDeleteWallet}>
+                                        
+                                            ${this.state.money}
+                                    </h1>
                                 </div>
                                 
                             </div>

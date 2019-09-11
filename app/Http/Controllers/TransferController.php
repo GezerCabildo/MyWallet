@@ -27,7 +27,7 @@ class TransferController extends Controller
     public function delete(Request $req)
     {
         //recupero laúnica cartera que se tiene
-        $wallet = Wallet::findOrFail(4);
+        $wallet = Wallet::findOrFail(1);
         //encuentro la transferencia por el id que envio desde el front-end
         $transfer = Transfer::findOrFail($req->id);
         $wallet->money -= $transfer->amount;

@@ -67485,6 +67485,7 @@ function (_Component) {
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    _this.handleDeleteWallet = _this.handleDeleteWallet.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -67690,6 +67691,63 @@ function (_Component) {
       return handleDelete;
     }()
   }, {
+    key: "handleDeleteWallet",
+    value: function () {
+      var _handleDeleteWallet = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var resultado, res, data;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                resultado = confirm("¿Quieres borrar todos los registros?");
+
+                if (!resultado) {
+                  _context4.next = 15;
+                  break;
+                }
+
+                _context4.prev = 2;
+                _context4.next = 5;
+                return fetch("".concat(_url__WEBPACK_IMPORTED_MODULE_5__["default"], "/api/walletDelete"));
+
+              case 5:
+                res = _context4.sent;
+                _context4.next = 8;
+                return res.json();
+
+              case 8:
+                data = _context4.sent;
+                this.setState({
+                  money: data.money,
+                  transfers: data.transfers
+                });
+                _context4.next = 15;
+                break;
+
+              case 12:
+                _context4.prev = 12;
+                _context4.t0 = _context4["catch"](2);
+                this.state({
+                  error: _context4.t0
+                });
+
+              case 15:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[2, 12]]);
+      }));
+
+      function handleDeleteWallet() {
+        return _handleDeleteWallet.apply(this, arguments);
+      }
+
+      return handleDeleteWallet;
+    }()
+  }, {
     key: "render",
     value: function render() {
       var estilo = {
@@ -67708,7 +67766,8 @@ function (_Component) {
         className: "col-4"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", {
         style: estilo,
-        className: "font-weight-bold"
+        className: "font-weight-bold",
+        onClick: this.handleDeleteWallet
       }, "$", this.state.money)))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row justify-content-center "
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
