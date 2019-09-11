@@ -157,7 +157,7 @@ export default class Example extends Component {
             <div className="container-fluid">
                 <div className="row">
 
-                    <div className="col-md-6 col-lg-4 formulario mb-5">
+                    <div className="col-sm-6 col-lg-4 formulario mb-5">
                         <div className="row justify-content-center">
 
         {/* //centroado por la fila y el estilo aplicado */}
@@ -188,7 +188,7 @@ export default class Example extends Component {
                             </div>
                     </div>
     {/* inicia la tabla */}
-                    <div className="col-md-6 col-lg-8 tabla">
+                    <div className="col-sm-6 col-lg-8 tabla">
                         <div className="row justify-content-center">
                             <div className="col-10">
                                     <TransferList 
