@@ -1,3 +1,3 @@
-const url = 'http://localhost:8000'
+const url = 'https://billeteraaplicacion.herokuapp.com'
 
 export default url
